@@ -1,0 +1,37 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Register";
+}
+<link href="~/css/Auth.css" rel="stylesheet" />
+
+<div class="wrapper fadeInDown">
+    <div id="formContent" style="background-color:orange">
+        <!-- Sekme Başlıkları -->
+        <!-- İkon -->
+        <div style="background-color:orange" class="fadeIn first">
+            <img src="https://cdn-icons-png.flaticon.com/512/4363/4363921.png" id="icon" alt="User Icon" />
+            <br />
+            <h2 style="margin:0px">Kayıt Olmak İçin Bilgilerinizi Doldurunuz</h2>
+        </div>
+        <div style="background-color:orange" asp-validation-summary="ModelOnly" class="text-danger"><img style="height:50px; width:50px" src="https://cdn-icons-png.flaticon.com/512/5020/5020420.png" /></div>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <!-- Kayıt Formu -->
+        <form method="post" asp-controller="Auth" asp-action="Register">
+            <input asp-for="Username" class="fadeIn second" placeholder="Kullanıcı Adı">
+            <br />
+            <span asp-validation-for="Username" class="text-danger"></span>
+            <input asp-for="Password" type="password" class="fadeIn third" placeholder="Şifre">
+            <br />
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <input style="background-color:black" type="submit" class="fadeIn fourth" value="Kayıt Ol">
+        </form>
+
+        <!-- Hesap Zaten Varsa? -->
+        <div id="formFooter" style="background-color:orange">
+            <a class="underlineHover" asp-controller="Auth" asp-action="Login">Zaten Hesabınız Var mı<img style="width:20px; height:20px;" src="https://cdn-icons-png.flaticon.com/512/7831/7831765.png"></img></a>
+        </div>
+
+    </div>
+</div>

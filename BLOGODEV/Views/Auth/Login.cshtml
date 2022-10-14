@@ -1,0 +1,40 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<link href="~/css/Auth.css" rel="stylesheet" />
+
+<div class="wrapper fadeInDown">
+    <div style="background-color:orange" id="formContent">
+        <!--   Sekme başlıkları   -->
+        <!--   İkon   -->
+        <div style="background-color:orange" class="fadeIn first">
+            <img src="https://cdn-icons-png.flaticon.com/512/4443/4443991.png" id="icon" alt="User Icon" />
+            <br />
+            <h2 style="margin:0px">Giriş Yapmak İçin Bilgilerinizi Doldurunuz</h2>
+        </div>
+        <div style="background-color:orange" asp-validation-summary="ModelOnly" class="text-danger"><img style="height:50px; width:50px" src="https://cdn-icons-png.flaticon.com/512/5020/5020420.png" /></div>
+        @if (TempData["message"] != null)
+        { 
+              <div class="text-success">@TempData["message"]</div> 
+        }
+        <!--  Giriş Formu  -->
+        <form style="background-color:orange" method="post" asp-controller="Auth" asp-action="Login" asp-route-yonlen="@ViewBag.yonlen">
+            <input asp-for="Username" class="fadeIn second" placeholder="Kullanıcı Adınızı Giriniz" />
+            <br />
+            <span asp-validation-for="Username" class="text-danger"></span>
+            <input asp-for="Password" type="password" class="fadeIn third" placeholder="Şifrenizi Giriniz" />
+            <br />
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <input style="background-color:black" type="submit" class="fadeIn third" value="Giriş Yap" />
+            <br />
+        </form>
+
+        <!-- Kayıt Ol  -->
+        <div style="background-color:orange" id="formFooter">
+            <a class="underlineHover" asp-controller="Auth" asp-action="Register"><img style="height:30px; width:30px" src="https://cdn-icons-png.flaticon.com/512/476/476758.png" />  Kayıt Olmak İçin Buraya Tıklayınız</a>
+        </div>
+    </div>
+</div>
